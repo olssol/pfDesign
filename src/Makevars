@@ -1,0 +1,13 @@
+SOURCES = $(wildcard stan_files/*.stan)
+OBJECTS = $(SOURCES:.stan=.o) RcppExports.o rcpp_tools.o 
+
+clean:
+		rm -rf stan_files/*.o
+		rm -rf *.so *.o
+		rm -rf stan_files/*.cc
+		rm -rf stan_files/*.hpp
+
+%.cc: %.stan
+		"$(R_HOME)/bin$(R_ARCH_BIN)/Rscript" -e "source(file.path('..', 'tools', 'make_cc.R')); make_cc(commandArgs(TRUE))" $<
+
+.phony: all clean
