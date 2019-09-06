@@ -44,7 +44,7 @@ pdSampleSingle <- function(vec_y, prior_smps = NULL, epsilon = 1, mix_ab = c(0.2
                         chains = chains,
                         ...);
 
-    rstan::extract(currst, par = "theta")$theta;
+    rstan::extract(post_theta, par = "theta")$theta;
 }
 
 
