@@ -8,6 +8,6 @@
 #'
 #' @export
 crtTest <- function(test) {
-    .Call(`_rtest_crtTest`, test)
+    .Call(`_pfDesign_crtTest`, test)
 }
 

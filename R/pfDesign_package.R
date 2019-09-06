@@ -1,9 +1,9 @@
-#' The 'rtest' package.
+#' The 'pfDesign' package.
 #'
 #' @docType package
-#' @name    rtest-package
-#' @aliases rtest
-#' @useDynLib rtest, .registration = TRUE
+#' @name    pfDesign-package
+#' @aliases pfDesign
+#' @useDynLib pfDesign, .registration = TRUE
 #'
 #' @import methods
 #' @import Rcpp
@@ -16,7 +16,9 @@
 #' @importFrom parallel detectCores
 #' @importFrom utils as.roman
 #'
-#' @description A template for R package that uses rstan and Rcpp
+#' @importFrom mvtnorm   rmvnorm
+#' 
+#' @description An Analysis Toolbox for Platform Design 
 #'
 #' @references
 #' Stan Development Team (2018). RStan: the R interface to Stan. R package version 2.18.2. http://mc-stan.org

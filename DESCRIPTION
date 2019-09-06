@@ -1,5 +1,5 @@
-Package: rtest
-Title: Template R package
+Package: pfDesign
+Title: Platform Design Toolboxs
 Version: 0.0
 Authors@R: 
     person(given = "Chenguang",
@@ -22,7 +22,7 @@ LinkingTo:
     rstan (>= 2.14),
     RcppEigen (>= 0.3.3.5.0),
     StanHeaders (>= 2.18.1-10)
-RcppModules: stan_fit4example_mod
+RcppModules: stan_fit4mixprior_mod
 Encoding: UTF-8
 LazyData: true
 NeedsCompilation: yes

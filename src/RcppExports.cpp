@@ -8,7 +8,7 @@ using namespace Rcpp;
 
 // crtTest
 double crtTest(double test);
-RcppExport SEXP _rtest_crtTest(SEXP testSEXP) {
+RcppExport SEXP _pfDesign_crtTest(SEXP testSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,12 +19,12 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_rtest_crtTest", (DL_FUNC) &_rtest_crtTest, 1},
+    {"_pfDesign_crtTest", (DL_FUNC) &_pfDesign_crtTest, 1},
     {NULL, NULL, 0}
 };
 
 void my_package_init(DllInfo *dll);
-RcppExport void R_init_rtest(DllInfo *dll) {
+RcppExport void R_init_pfDesign(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
     my_package_init(dll);
