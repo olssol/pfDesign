@@ -44,7 +44,7 @@ pdSampleSingle <- function(vec_y, prior_smps = NULL, epsilon = 1, mix_ab = c(0.2
                         chains = chains,
                         ...);
 
-    post_theta
+    rstan::extract(currst, par = "theta")$theta;
 }
 
 
@@ -78,8 +78,7 @@ pdSample <- function(vec_y, vec_interval, epsilons = 1, ...) {
     last_smps = NULL;
     for (i in 1:n_intv) {
         cury      = vec_y[which(i == vec_interval)];
-        currst    = pdSampleSingle(cury, prior_smps = last_smps, epsilon = epsilons[i], ...);
-        last_smps = rstan::extract(currst, par = "theta")$theta;
+        last_smps = pdSampleSingle(cury, prior_smps = last_smps, epsilon = epsilons[i], ...);
         all_rst   = rbind(all_rst,
                           data.frame(theta = last_smps,
                                      interval = i));
