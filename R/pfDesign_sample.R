@@ -79,7 +79,7 @@ pdSample <- function(vec_y, vec_interval, epsilons = 1, ...) {
     for (i in 1:n_intv) {
         cury      = vec_y[which(i == vec_interval)];
         currst    = pdSampleSingle(cury, prior_smps = last_smps, epsilon = epsilons[i], ...);
-        last_smps = extract(currst, par = "theta")$theta;
+        last_smps = rstan::extract(currst, par = "theta")$theta;
         all_rst   = rbind(all_rst,
                           data.frame(theta = last_smps,
                                      interval = i));
