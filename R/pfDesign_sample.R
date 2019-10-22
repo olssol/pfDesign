@@ -89,22 +89,3 @@ pdSample <- function(vec_y, vec_interval, epsilons = 1, ...) {
 }
 
 
-#' Create interval
-#'
-#' @param trange map enrollment time to certain range
-#'
-#' @export
-#'
-pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0, t_end = 2) {
-    max_t = max(vec_t) + 0.0001;
-    min_t = min(vec_t) - 0.0001;
-
-    lt    = t_end - t_start;
-    lint  = lt / n_interval;
-    vec_t = t_start + lt*(vec_t - min_t)/(max_t - min_t);
-    vec_i = ceiling(vec_t / lint);
-
-    data.frame(mapt     = vec_t,
-               interval = vec_i);
-
-}

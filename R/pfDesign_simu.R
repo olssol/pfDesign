@@ -96,5 +96,28 @@ pdSimuPts <- function(nPat, mu_0 = 0, ...) {
     y      = rbinom(nPat, 1, emu);
 
     ## return
-    cbind(data.frame(y = y), simu_x$dx, simu_t$dtime);
+    cbind(data.frame(y = y, xbeta = simu_x$xbeta,
+                     tgamma = simu_t$tgamma, mu = emu),
+          simu_x$dx, simu_t$dtime);
 }
+
+#' Create interval
+#'
+#' @param trange map enrollment time to certain range
+#'
+#' @export
+#'
+pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0, t_end = 2) {
+    max_t = max(vec_t) + 0.0001;
+    min_t = min(vec_t) - 0.0001;
+
+    lt    = t_end - t_start;
+    lint  = lt / n_interval;
+    map_t = t_start + lt*(vec_t - min_t)/(max_t - min_t);
+    vec_i = ceiling(map_t / lint);
+
+    data.frame(mapt     = map_t,
+               interval = vec_i);
+
+}
+
