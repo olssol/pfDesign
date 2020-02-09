@@ -46,10 +46,10 @@ pdSimuX <- function(nPat, muCov, sdCov, corCov, cov.breaks = NULL,
 #'
 #' @export
 #'
-pdSimuTime <- function(nPat, exp_rate = 1, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NULL, ...) {
+pdSimuTime <- function(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NULL, ...) {
 
     ## check par
-    fmla = fmla_t;
+    fmla <-  fmla_t;
     stopifnot(inherits(fmla,"formula") | is.null(fmla));
 
     if (!is.null(seed))
@@ -59,7 +59,7 @@ pdSimuTime <- function(nPat, exp_rate = 1, fmla_t = NULL, coeff_t = 1, dtime = N
     ## simulate time
     if (is.null(dtime)) {
         ## rexp(n = nPat, rate = exp_rate)
-        dtime = data.frame(time = runif(nPat));
+        dtime <-  data.frame(time = runif(nPat));
     }
 
     ## tgamma
@@ -107,15 +107,20 @@ pdSimuPts <- function(nPat, mu_0 = 0, ...) {
 #'
 #' @export
 #'
-pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0, t_end = 2) {
+pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0, t_hist = 2, t_end = 3) {
+
+    ## map time
     max_t = max(vec_t) + 0.0001;
     min_t = min(vec_t) - 0.0001;
-
     lt    = t_end - t_start;
-    lint  = lt / n_interval;
     map_t = t_start + lt*(vec_t - min_t)/(max_t - min_t);
-    vec_i = ceiling(map_t / lint);
 
+    ## intervals
+    lint  = (t_hist - t_start) / n_interval;
+    vec_i = ceiling(map_t / lint);
+    vec_i[which(map_t > t_hist)] = n_interval + 1;
+
+    ## return
     data.frame(mapt     = map_t,
                interval = vec_i);
 
