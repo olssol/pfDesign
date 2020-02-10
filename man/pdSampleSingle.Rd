@@ -5,17 +5,18 @@
 \title{Sample with a mixture prior for binary outcomes}
 \usage{
 pdSampleSingle(vec_y, prior_smps = NULL, epsilon = 1,
-  mix_ab = c(0.25, 0.25), iter = 5000, ...)
+  mix_ab = c(0.25, 0.25), nsmps = 5000, chains = 4, warmup = 1000,
+  ...)
 }
 \arguments{
 \item{mix_ab}{beta shape parameters (a, b) for a non-informative prior}
 
-\item{iter}{number of thetas to draw when there is no prior samples.
-otherwise, draw the same number of thetas as in the prior samples}
-
 \item{...}{optional parameters for \code{\link{pdStan}}}
 
 \item{vecy}{vector of binary outcomes}
+
+\item{iter}{number of thetas to draw when there is no prior samples.
+otherwise, draw the same number of thetas as in the prior samples}
 
 \item{epsillon}{mixture proportion from the prior samples. ignored if
 prior_smps is NULL}

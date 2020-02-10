@@ -5,7 +5,7 @@
 \title{Call STAN models}
 \usage{
 pdSTAN(lst.data, stan.mdl = "mixprior", chains = 4, iter = 2000,
-  warmup = 1000, control = list(adapt_delta = 0.95), ...)
+  warmup = 1000, control = list(adapt_delta = 0.95), cores = 4, ...)
 }
 \arguments{
 \item{chains}{STAN parameter. Number of Markov chainsm}
