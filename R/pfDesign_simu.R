@@ -101,9 +101,20 @@ pdSimuPts <- function(nPat, mu_0 = 0, ...) {
           simu_x$dx, simu_t$dtime);
 }
 
-#' Create interval
+#' Create time interval
 #'
+#'
+#' Map enrollment time to [0, start of current study] and [start of current
+#' study, end of current study]. Then, create intervals for [0, start of current
+#' study].
+#'
+#' @param vec_t patient enrollment time
 #' @param trange map enrollment time to certain range
+#' @param n_interval number of intervals for historical enrollment
+#' @param t_start time corresponding to the start of the study
+#' @param t_hist time corresponding to the end of the historical study and start
+#'               of the current randomized segment
+#' @param t_end time corresponding to the end of the study
 #'
 #' @export
 #'

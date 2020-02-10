@@ -13,7 +13,7 @@ pdLogist <- function(dta, fml, inx, n_bs = 500) {
 
     f_est <- function(d) {
         r_glm <- glm(fml, data = d, family = "binomial")
-        r_prd <- predict(r_glm)[inx]
+        r_prd <- predict(r_glm, type = "response")[inx]
         mean(r_prd)
     }
 

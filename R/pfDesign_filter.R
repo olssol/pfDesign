@@ -26,7 +26,7 @@ pdFilter <- function(vec_y, vec_interval, nsmps = 5000, epsilons = 1,
     f.d <- function(p, l, i) {
         rst = rbind(data.frame(theta = as.numeric(p), type = "Posterior"),
                     data.frame(theta = as.numeric(l), type = "Contaminated"))
-        rst$interval = i
+        rst$interval <- i
         rst
     }
 
