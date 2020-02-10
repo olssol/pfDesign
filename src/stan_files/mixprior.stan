@@ -8,7 +8,7 @@ functions {
     int  mid; 
 
     while (up > low + 1) {
-      mid = (low + up)/2
+      mid = (low + up)/2;
       if (smp[mid] > p) {
         up = mid;
       } else {
