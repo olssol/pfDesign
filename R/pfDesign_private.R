@@ -16,10 +16,13 @@ expit <- function(x) {
 
 get.xbeta <- function(covX, regCoeff) {
     if (length(regCoeff) > 0 &
-        length(regCoeff) != ncol(covX))
-        warning("Number of coefficients does not match with the design matrix.");
+        length(regCoeff) != ncol(covX)) {
+        stop("Number of coefficients does not match with the design matrix.")
+    }
 
-    apply(covX, 1, function(x) {sum(x * regCoeff)});
+    apply(covX, 1, function(x) {
+        sum(x * regCoeff)
+    })
 }
 
 

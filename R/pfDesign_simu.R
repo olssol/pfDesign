@@ -59,7 +59,7 @@ pdSimuTime <- function(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NU
     ## simulate time
     if (is.null(dtime)) {
         ## rexp(n = nPat, rate = exp_rate)
-        dtime <-  data.frame(time = runif(nPat));
+        dtime <- data.frame(time = runif(nPat));
     }
 
     ## tgamma
