@@ -1,6 +1,6 @@
 Package: pfDesign
 Title: Platform Design Toolboxs
-Version: 1.0
+Version: 1.2
 Authors@R: 
     person(given = "Chenguang",
            family = "Wang",

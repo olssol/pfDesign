@@ -25,7 +25,7 @@ get.xbeta <- function(covX, regCoeff) {
     })
 }
 
-
+## get covariance matrix
 get.covmat <- function(StDevCovar, corrCovar) {
     n.x      <- length(StDevCovar);
     Vars     <- StDevCovar*StDevCovar;
@@ -37,7 +37,7 @@ get.covmat <- function(StDevCovar, corrCovar) {
                 CovarMat[i,i] <- Vars[i];
                 next;
             }
-            CovarMat[i, j] <- corrCovar*StDevCovar[i]*StDevCovar[j];
+            CovarMat[i, j] <- corrCovar * StDevCovar[i] * StDevCovar[j];
             CovarMat[j, i] <- CovarMat[i, j];
         }
     }

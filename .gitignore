@@ -1,8 +1,10 @@
 .Rproj.user
 .Rhistory
 .RData
-*.yml
 inst/doc
+.DS_Store
+.history
+*.pdf
+*.yml
 *.so
 *.o
-.DS_Store

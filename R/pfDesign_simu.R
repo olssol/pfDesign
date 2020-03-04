@@ -3,11 +3,11 @@
 #'
 #' @export
 #'
-pdSimuX <- function(nPat, muCov, sdCov, corCov, cov.breaks = NULL,
+pdSimuX <- function(n_pat, muCov, sdCov, corCov, cov.breaks = NULL,
                     fmla_x = NULL, coeff_x = 1, dx = NULL, seed = NULL, ...) {
 
-    fmla = fmla_x;
-    stopifnot(nPat > 0 & is.null(dx));
+    fmla <-  fmla_x;
+    stopifnot(n_pat > 0 & is.null(dx));
     stopifnot(inherits(fmla,"formula") | is.null(fmla));
 
     if (!is.null(seed))
@@ -15,11 +15,11 @@ pdSimuX <- function(nPat, muCov, sdCov, corCov, cov.breaks = NULL,
 
     ## simulate covariates
     if (is.null(dx)) {
-        cov_x <- rmvnorm(nPat,
+        cov_x <- rmvnorm(n_pat,
                          mean  = muCov,
                          sigma = get.covmat(sdCov, corCov));
 
-        colnames(cov_x) <- paste("V", 1:ncol(cov_x), sep="");
+        colnames(cov_x) <- paste("V", 1:ncol(cov_x), sep = "");
         cov_x           <- data.frame(cov_x);
         cov_x           <- get.cov.cat(cov_x, cov.breaks);
     }
@@ -30,8 +30,8 @@ pdSimuX <- function(nPat, muCov, sdCov, corCov, cov.breaks = NULL,
                               paste(colnames(cov_x), collapse = "+")));
     }
 
-    d.matrix = model.matrix(fmla, cov_x);
-    xbeta    = get.xbeta(d.matrix, coeff_x);
+    d.matrix <- model.matrix(fmla, cov_x);
+    xbeta    <- get.xbeta(d.matrix, coeff_x);
 
     ## return
     if (!is.null(old.seed))
@@ -46,20 +46,21 @@ pdSimuX <- function(nPat, muCov, sdCov, corCov, cov.breaks = NULL,
 #'
 #' @export
 #'
-pdSimuTime <- function(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NULL, ...) {
+pdSimuTime <- function(n_pat, fmla_t = NULL, coeff_t = 1,
+                       dtime = NULL, seed = NULL, ...) {
 
     ## check par
     fmla <-  fmla_t;
-    stopifnot(inherits(fmla,"formula") | is.null(fmla));
+    stopifnot(inherits(fmla, "formula") | is.null(fmla));
 
     if (!is.null(seed))
-        old.seed <- set.seed(seed);
+        old_seed <- set.seed(seed);
 
 
     ## simulate time
     if (is.null(dtime)) {
-        ## rexp(n = nPat, rate = exp_rate)
-        dtime <- data.frame(time = runif(nPat));
+        ## rexp(n = n_pat, rate = exp_rate)
+        dtime <- data.frame(time = runif(n_pat, min = 0, max = 10))
     }
 
     ## tgamma
@@ -67,11 +68,11 @@ pdSimuTime <- function(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NU
         fmla <- formula(paste("~ -1 + time"));
     }
 
-    d.matrix = model.matrix(fmla, dtime);
-    tgamma   = get.xbeta(d.matrix, coeff_t);
+    d_matrix <- model.matrix(fmla, dtime);
+    tgamma   <- get.xbeta(d_matrix, coeff_t);
 
     if (!is.null(seed))
-        set.seed(old.seed)
+        set.seed(old_seed)
 
     list(tgamma = tgamma,
          dtime  = dtime);
@@ -82,18 +83,18 @@ pdSimuTime <- function(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL, seed = NU
 #'
 #' @export
 #'
-pdSimuPts <- function(nPat, mu_0 = 0, ...) {
+pdSimuPts <- function(n_pat, mu_0 = 0, ...) {
 
     ## time
-    simu_t = pdSimuTime(nPat, ...);
+    simu_t <- pdSimuTime(n_pat, ...);
 
     ## covariates
-    simu_x = pdSimuX(nPat, ...);
+    simu_x <- pdSimuX(n_pat, ...);
 
     ## outcome
-    mu_all = mu_0 + simu_t$tgamma + simu_x$xbeta;
-    emu    = expit(mu_all);
-    y      = rbinom(nPat, 1, emu);
+    mu_all <- mu_0 + simu_t$tgamma + simu_x$xbeta;
+    emu    <- expit(mu_all);
+    y      <- rbinom(n_pat, 1, emu);
 
     ## return
     cbind(data.frame(y = y, xbeta = simu_x$xbeta,
@@ -118,22 +119,23 @@ pdSimuPts <- function(nPat, mu_0 = 0, ...) {
 #'
 #' @export
 #'
-pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0, t_hist = 2, t_end = 3) {
+pdGetInt  <- function(vec_t, n_interval = 4,
+                      t_start = 0, t_hist = 2, t_end = 3) {
 
     ## map time
-    max_t = max(vec_t) + 0.0001;
-    min_t = min(vec_t) - 0.0001;
-    lt    = t_end - t_start;
-    map_t = t_start + lt*(vec_t - min_t)/(max_t - min_t);
+    max_t <- max(vec_t) + 0.0001
+    min_t <- min(vec_t) - 0.0001
+    lt    <- t_end - t_start
+    map_t <- t_start + lt * (vec_t - min_t) / (max_t - min_t)
 
     ## intervals
-    lint  = (t_hist - t_start) / n_interval;
-    vec_i = ceiling(map_t / lint);
-    vec_i[which(map_t > t_hist)] = n_interval + 1;
+    lint  <- (t_hist - t_start) / n_interval
+    vec_i <- ceiling(map_t / lint)
+    vec_i[which(map_t > t_hist)] <- n_interval + 1
 
     ## return
     data.frame(mapt     = map_t,
-               interval = vec_i);
+               interval = vec_i)
 
 }
 
