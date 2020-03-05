@@ -130,24 +130,23 @@ pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0,
         min_t <- min(vec_t) - 0.0001
         lt    <- t_end - t_start
         map_t <- t_start + lt * (vec_t - min_t) / (max_t - min_t)
-    } 
+    }
 
     ## intervals
     lint  <- (t_hist - t_start) / n_interval
     vec_i <- ceiling(map_t / lint)
     vec_i[which(map_t > t_hist)] <- n_interval + 1
 
-    ## interval time 
+    ## interval time
     itime <- c(1:n_interval - lint/2, t_hist + (t_end - t_hist)/2)
 
     ## label
     sinterval <- c(paste("Interval", 1:n_interval),  "Concurrent")
 
     ## return
-    data.frame(time     = vec_t,
+    data.frame(orgt     = vec_t, ## original time
                mapt     = map_t,
                interval = vec_i,
                itime    = itime[vec_i],
                ilabel   = sinterval[vec_i])
 }
-
