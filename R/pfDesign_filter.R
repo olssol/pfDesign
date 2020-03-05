@@ -97,10 +97,11 @@ pdFilter <- function(vec_y, vec_interval, nsmps = 5000, epsilons = 1,
 #' Particle filter for a given interval
 #'
 #'
-#' @param y         current Y
+#' @param y current Y
 #' @param last_smps col 1: prior samples of theta; col 2: mixture indicator
-#' @param last_weights normalized weights corresponding to last_smps. If NULL, all weights are 1/N.
-#' @param f_ll   likelihood function
+#' @param last_weights normalized weights corresponding to last_smps. If NULL,
+#'     all weights are 1/N.
+#' @param f_ll likelihood function
 #'
 #' @return col 1: theta; col 2: mixture indicator; col 3: weights
 #' @export
