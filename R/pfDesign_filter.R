@@ -26,8 +26,10 @@ pdFilter <- function(vec_y, vec_interval, nsmps = 5000, epsilons = 1,
                      ...) {
 
     f_d <- function(p, l, i, eps) {
-        rst  <- rbind(data.frame(theta = as.numeric(p), type = "Posterior"),
-                      data.frame(theta = as.numeric(l), type = "Mixed"))
+        rst  <- rbind(data.frame(theta = as.numeric(p),
+                                 type  = "Posterior"),
+                      data.frame(theta = as.numeric(l),
+                                 type  = "Mixed"))
         rst$interval <- i
         rst$epsilon  <- eps
         rst

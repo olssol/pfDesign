@@ -47,7 +47,7 @@ pdSimuX <- function(n_pat, muCov, sdCov, corCov, cov.breaks = NULL,
 #' @export
 #'
 pdSimuTime <- function(n_pat, fmla_t = NULL, coeff_t = 1,
-                       dtime = NULL, seed = NULL, ...) {
+                       dtime = NULL, max = 1, seed = NULL, ...) {
 
     ## check par
     fmla <-  fmla_t;
@@ -60,7 +60,7 @@ pdSimuTime <- function(n_pat, fmla_t = NULL, coeff_t = 1,
     ## simulate time
     if (is.null(dtime)) {
         ## rexp(n = n_pat, rate = exp_rate)
-        dtime <- data.frame(time = runif(n_pat, min = 0, max = 10))
+        dtime <- data.frame(time = runif(n_pat, min = 0, max = max))
     }
 
     ## tgamma
