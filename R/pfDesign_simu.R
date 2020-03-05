@@ -138,7 +138,8 @@ pdGetInt  <- function(vec_t, n_interval = 4, t_start = 0,
     vec_i[which(map_t > t_hist)] <- n_interval + 1
 
     ## interval time
-    itime <- c(1:n_interval - lint/2, t_hist + (t_end - t_hist)/2)
+    itime <- c(seq(lint/2, t_hist - lint/2, lint),
+               t_hist + (t_end - t_hist)/2)
 
     ## label
     sinterval <- c(paste("Interval", 1:n_interval),  "Concurrent")
