@@ -22,3 +22,5 @@ void my_package_init(DllInfo *dll) {
 double crtTest(double test) {
   return pow(test,2);
 }
+
+

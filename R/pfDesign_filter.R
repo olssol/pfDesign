@@ -172,10 +172,8 @@ pdTran <- function(smps, epsilon = 1, f_pi0 = pdBinPi0, ...) {
 #' @export
 #'
 pdBinPmf <- function(theta, y) {
-    theta^sum(y) * (1 - theta)^sum(1 - y)
+    dbinom(sum(y), length(y), theta)
 }
-
-
 
 #' Noninformative Pi_0(theta)
 #'
