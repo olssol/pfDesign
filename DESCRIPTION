@@ -1,7 +1,7 @@
 Package: pfDesign
 Title: Platform Design Toolboxs
-Version: 1.2
-Authors@R: 
+Version: 1.3
+Authors@R:
     person(given = "Chenguang",
            family = "Wang",
            role = c("aut", "cre"),
@@ -14,9 +14,9 @@ Depends:
     R (>= 3.5.0),
     rstan (>= 2.19.2),
     Rcpp (>= 1.0.2)
-Imports: 
+Imports:
     parallel (>= 3.2)
-LinkingTo: 
+LinkingTo:
     BH (>= 1.69.0-1),
     Rcpp (>= 1.0.2),
     rstan (>= 2.14),
