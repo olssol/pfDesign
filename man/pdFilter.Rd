@@ -4,9 +4,18 @@
 \alias{pdFilter}
 \title{Particle filter all}
 \usage{
-pdFilter(vec_y, vec_interval, nsmps = 5000, epsilons = 1,
-  f_tran = pdTran, f_post = pdBinPost, f_pi0 = pdBinPi0,
-  f_filter = pdFilterSingle, ...)
+pdFilter(
+  vec_y,
+  vec_interval,
+  nsmps = 5000,
+  epsilons = 1,
+  f_tran = pdTran,
+  f_post = pdBinPost,
+  f_pi0 = pdBinPi0,
+  f_filter = pdFilterSingle,
+  update_eps = FALSE,
+  ...
+)
 }
 \arguments{
 \item{f_tran}{transition function}
@@ -18,14 +27,15 @@ first interval}
 
 \item{f_filter}{particle filter function}
 
+\item{update_eps}{whether keep epsilon as constant (design parameter)}
+
 \item{...}{parameters for the transition function}
 
 \item{vecy}{vector of binary outcomes}
 
 \item{mix_ab}{beta shape parameters (a, b) for a non-informative prior}
 
-\item{epsillon}{mixture proportion from the prior samples. ignored if
-prior_smps is NULL}
+\item{epsillon}{mixture proportion from the prior samples.}
 }
 \description{
 Particle filter all

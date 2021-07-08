@@ -4,17 +4,27 @@
 \alias{pdFilterSingle}
 \title{Particle filter for a given interval}
 \usage{
-pdFilterSingle(y, last_smps, last_weights = NULL, f_ll = pdBinPmf,
-  thresh_ess = NULL, ...)
+pdFilterSingle(
+  y,
+  last_smps,
+  last_weights = NULL,
+  f_ll = pdBinPmf,
+  thresh_ess = NULL,
+  ...
+)
 }
 \arguments{
 \item{y}{current Y}
 
-\item{last_smps}{prior samples of theta}
+\item{last_smps}{col 1: prior samples of theta; col 2: mixture indicator}
 
-\item{last_weights}{normalized weights corresponding to last_smps. If NULL, all weights are 1/N.}
+\item{last_weights}{normalized weights corresponding to last_smps. If NULL,
+all weights are 1/N.}
 
 \item{f_ll}{likelihood function}
+}
+\value{
+col 1: theta; col 2: mixture indicator; col 3: weights
 }
 \description{
 Particle filter for a given interval

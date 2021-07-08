@@ -5,10 +5,10 @@ functions {
     real rst;
     int  low = 1;
     int  up  = nsmp;
-    int  mid; 
+    int  mid;
 
     while (up > low + 1) {
-      mid = (low + up)/2;
+      mid = (low + up) / 2;
       if (smp[mid] > p) {
         up = mid;
       } else {
@@ -52,8 +52,8 @@ data {
   int<lower = 1>  N; //total number of patients
   int<lower = 0>  Y; //number of responsders
 
-  int<lower = 1>  NSMP;  //number of prior samples 
-  vector[NSMP]    SMP;   //prior samples 
+  int<lower = 1>  NSMP;  //number of prior samples
+  vector[NSMP]    SMP;   //prior samples
 }
 
 parameters {
@@ -67,7 +67,7 @@ transformed parameters {
 model {
   // log-likelihood
   target += uniform_lpdf(p | 0, 1);
-  target += binomial_lpmf(Y | N, theta); 
+  target += binomial_lpmf(Y | N, theta);
 }
 
 generated quantities {

@@ -4,7 +4,15 @@
 \alias{pdGetInt}
 \title{Create time interval}
 \usage{
-pdGetInt(vec_t, n_interval = 4, t_start = 0, t_hist = 2, t_end = 3)
+pdGetInt(
+  vec_t,
+  n_interval = 4,
+  t_start = 0,
+  t_hist = 2,
+  t_end = 3,
+  remap = FALSE,
+  ...
+)
 }
 \arguments{
 \item{vec_t}{patient enrollment time}

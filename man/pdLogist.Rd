@@ -4,14 +4,12 @@
 \alias{pdLogist}
 \title{Estimate response rates using parametric logistic model}
 \usage{
-pdLogist(dta, fml, inx, n_bs = 500)
+pdLogist(dta, fml, n_bs = 500)
 }
 \arguments{
 \item{dta}{data frame}
 
 \item{fml}{logistic model formula}
-
-\item{inx}{current study indices}
 
 \item{n_bs}{number of bootstraps}
 }

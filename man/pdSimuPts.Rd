@@ -4,7 +4,7 @@
 \alias{pdSimuPts}
 \title{Simulate enrollment}
 \usage{
-pdSimuPts(nPat, mu_0 = 0, ...)
+pdSimuPts(n_pat, mu_0 = 0, ...)
 }
 \description{
 Simulate enrollment

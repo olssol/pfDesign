@@ -4,8 +4,16 @@
 \alias{pdSimuTime}
 \title{Simulate enrollment}
 \usage{
-pdSimuTime(nPat, fmla_t = NULL, coeff_t = 1, dtime = NULL,
-  seed = NULL, ...)
+pdSimuTime(
+  n_pat,
+  fmla_t = NULL,
+  coeff_t = 1,
+  dtime = NULL,
+  t_start = 0,
+  t_end = 3,
+  seed = NULL,
+  ...
+)
 }
 \description{
 Simulate enrollment

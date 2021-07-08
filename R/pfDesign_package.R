@@ -36,3 +36,19 @@ NULL
 #'
 #'
 NULL
+
+
+#' @title Example dataset
+#'
+#' Example dataset of a single arm study.
+#'
+#' @usage data(ex_dta)
+#' @name ex_dta
+#' @keywords datasets
+#'
+#' @format A data frame with the following variables:
+#' \itemize{
+#'   \item{Enroll_Time}{Days from the time the first patient was enrolled}
+#'   \item{Y}{Binary outcome}
+#' }
+"ex_dta"

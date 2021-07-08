@@ -1,6 +1,6 @@
 Package: pfDesign
-Title: Platform Design Toolboxs
-Version: 1.3
+Title: An Adaptive Platform Trial Design Toolbox
+Version: 1.4
 Authors@R:
     person(given = "Chenguang",
            family = "Wang",
@@ -27,7 +27,7 @@ Encoding: UTF-8
 LazyData: true
 NeedsCompilation: yes
 SystemRequirements: GNU make
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.1
 Suggests:
     knitr,
     shiny,

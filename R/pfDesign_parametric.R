@@ -45,3 +45,23 @@ pdLogist <- function(dta, fml, n_bs = 500) {
           mean = m,
           variance = apply(vec_bs, 1, var, na.rm = TRUE))
 }
+
+#' Effective Sample Size
+#'
+#' @param dist_post posterior distribution based on informative prior
+#' @param dist_ref  posterior distribution based on non-informative prior
+#' @param n_ref sample size in the current study
+#'
+#' @return Effective sample size
+#'
+#' @export
+#'
+pdESS <- function(dist_post, dist_ref, n_ref) {
+    var_0 <- var(dist_ref)
+    var_1 <- var(dist_post)
+
+    n_post <- n_ref * (var_0 / var_1)
+
+    c(ESS    = n_post - n_ref,
+      n_post = n_post)
+}

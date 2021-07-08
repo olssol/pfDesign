@@ -8,8 +8,7 @@
 #'
 #' @param vecy vector of binary outcomes
 #' @param mix_ab beta shape parameters (a, b) for a non-informative prior
-#' @param epsillon mixture proportion from the prior samples. ignored if
-#'     prior_smps is NULL
+#' @param epsillon mixture proportion from the prior samples.
 #' @param f_tran transition function
 #' @param f_post posterior sampling when the prior is pi_0, usually for the
 #'     first interval

@@ -1,0 +1,82 @@
+---
+title: "pfDesign: An Adaptive Platform Trial Design Toolbox"
+author: "Chenguang Wang"
+date: "`r Sys.Date()`"
+output:
+    pdf_document:
+      keep_tex:  true
+    ## rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pfDesign: An Adaptive Platform Trial Design Toolbox}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+# Introduction
+
+In the *R* package **pfDesign**, we implement functions for the design and
+analysis of adaptive platform trials. The package is currently available on
+GitHub, and can be installed in *R* as follows:
+
+```{r, eval=F, echo=TRUE}
+require(devtools)
+install_github("olssol/pfDesign")
+```
+
+After installation, the package can be loaded in *R* as follows:
+
+```{r, eval=T, echo=TRUE}
+require(pfDesign)
+```
+
+# Major Function
+
+The major function provided in **pfDesign** is **pdFilter**, which implements a particle filter
+algorithm for posterior sampling with a TEA prior. The function is defined as follows:
+
+```{r, eval=F, echo=TRUE}
+pdFilter(vec_y, vec_interval, nsmps = 5000, epsilons = 1, ...)
+```
+The main parameters for **pdFilter** are
+
+1. *vec_y*: Vector of binary outcomes
+2. *vec_interval*: Vector of interval indices
+3. *epsillon*: Mixture proportions $\epsilon$
+4. *nsmps*: Number of posterior samples
+
+# Example
+
+The following is an example for applying the function *pdFilter* to obtain
+posterior samples. In the example, we set $\epsilon_k \equiv 0.5$, and create
+two intervals, split at day $100$.
+
+```{r, eval=T, echo=TRUE}
+## load example data in  pfDesign
+data(ex_dta)
+
+## create time intervals based on enrollment time
+vec_interval <- as.numeric(cut(ex_dta$Enroll_Time,
+                               breaks = c(-Inf, 100, Inf)))
+
+## binary outcome
+vec_y <- ex_dta$Outcome
+
+## get posterior samples
+post_smps <- pdFilter(vec_y,
+                      vec_interval,
+                      nsmps = 5000,
+                      epsilons = 0.5)
+```
+
+The results are returned as a *data.frame* in *post_smps*. The following code
+generates the density plots for the posterior samples after interval 1 and 2.
+
+```{r, eval=F, echo=TRUE}
+post_smps$interval <- as.factor(post_smps$interval)
+ggplot(data = post_smps, aes(x = theta, group = interval)) +
+    stat_density(aes(color = interval),
+                 position = "identity",
+                 geom = "line", adjust = 1) +
+    theme_bw()
+```{r, eval=T, echo=TRUE}

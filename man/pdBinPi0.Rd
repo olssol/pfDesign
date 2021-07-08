@@ -4,7 +4,12 @@
 \alias{pdBinPi0}
 \title{Noninformative Pi_0(theta)}
 \usage{
-pdBinPi0(n, mix_ab = c(0.25, 0.25), ...)
+pdBinPi0(nsmps, mix_ab = c(0.25, 0.25), ...)
+}
+\arguments{
+\item{nsmps}{number of samples to draw}
+
+\item{mix_ab}{shape parameters for Beta}
 }
 \description{
 Noninformative Pi_0(theta)

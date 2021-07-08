@@ -34,7 +34,7 @@ pdSimuX <- function(n_pat, muCov, sdCov, corCov, cov.breaks = NULL,
     xbeta    <- get.xbeta(d.matrix, coeff_x);
 
     ## return
-    if (!is.null(old.seed))
+    if (!is.null(seed))
         set.seed(old.seed)
 
     list(xbeta = xbeta,

@@ -4,8 +4,18 @@
 \alias{pdSimuX}
 \title{Simulate covariates}
 \usage{
-pdSimuX(nPat, muCov, sdCov, corCov, cov.breaks = NULL, fmla_x = NULL,
-  coeff_x = 1, dx = NULL, seed = NULL, ...)
+pdSimuX(
+  n_pat,
+  muCov,
+  sdCov,
+  corCov,
+  cov.breaks = NULL,
+  fmla_x = NULL,
+  coeff_x = 1,
+  dx = NULL,
+  seed = NULL,
+  ...
+)
 }
 \description{
 Simulate covariates

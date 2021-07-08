@@ -4,9 +4,16 @@
 \alias{pdSampleSingle}
 \title{Sample with a mixture prior for binary outcomes}
 \usage{
-pdSampleSingle(vec_y, prior_smps = NULL, epsilon = 1,
-  mix_ab = c(0.25, 0.25), nsmps = 5000, chains = 4, warmup = 1000,
-  ...)
+pdSampleSingle(
+  vec_y,
+  prior_smps = NULL,
+  epsilon = 1,
+  mix_ab = c(0.25, 0.25),
+  nsmps = 5000,
+  chains = 4,
+  warmup = 1000,
+  ...
+)
 }
 \arguments{
 \item{mix_ab}{beta shape parameters (a, b) for a non-informative prior}

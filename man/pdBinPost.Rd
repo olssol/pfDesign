@@ -6,6 +6,11 @@
 \usage{
 pdBinPost(y, nsmps = 5000, mix_ab = c(0.25, 0.25), ...)
 }
+\arguments{
+\item{nsmps}{number of samples to draw}
+
+\item{mix_ab}{shape parameters for Beta}
+}
 \description{
 Posterior Beta
 }
