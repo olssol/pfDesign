@@ -12,7 +12,6 @@ pdLogist <- function(dta, fml, n_bs = 500) {
 
     f_est <- function(d, intervals) {
         r_glm <- glm(fml, data = d, family = "binomial")
-        browser()
         r_prd <- predict(r_glm, type = "response")
 
         rst <- NULL
