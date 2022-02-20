@@ -1,6 +1,6 @@
 Package: pfDesign
 Title: An Adaptive Platform Trial Design Toolbox
-Version: 1.4
+Version: 2.0
 Authors@R:
     person(given = "Chenguang",
            family = "Wang",

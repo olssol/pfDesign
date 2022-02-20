@@ -222,7 +222,6 @@ pd_ss_summarize <- function(rst_truth, rst_theta, rst_filter, rst_par,
         c(pval, p_g0)
     }
 
-
     f_theta <- function(rst, g) {
         int <- max(rst$interval)
         rst <- rst %>%
@@ -274,6 +273,8 @@ pd_ss_summarize <- function(rst_truth, rst_theta, rst_filter, rst_par,
         est2  <- mean(rst_trt[[1]])
         var2  <- var(rst_trt[[1]])
         type1 <- get_pval(est1, var1, est2, var2)
+
+        browser()
 
         ## power
         est2  <- mean(rst_trt[[2]])

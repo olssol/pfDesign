@@ -16,7 +16,7 @@ pdLogist <- function(dta, fml, n_bs = 500) {
 
         rst <- NULL
         for (i in intervals) {
-            cinx <- which(dta$interval == i)
+            cinx <- which(d$interval == i)
             if (0 == length(cinx)) {
                 rst <- c(rst, NA)
             } else {
@@ -32,6 +32,7 @@ pdLogist <- function(dta, fml, n_bs = 500) {
     ## original data
     m <- f_est(dta, intervals)
 
+
     ## bootstrap
     vec_bs <- NULL
     for (i in 1:n_bs) {
@@ -42,7 +43,7 @@ pdLogist <- function(dta, fml, n_bs = 500) {
     }
 
     cbind(interval = intervals,
-          mean = m,
+          mean     = m,
           variance = apply(vec_bs, 1, var, na.rm = TRUE))
 }
 

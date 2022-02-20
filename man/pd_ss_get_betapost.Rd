@@ -4,7 +4,7 @@
 \alias{pd_ss_get_betapost}
 \title{Draw posterior distribution through Beta}
 \usage{
-pd_ss_get_betapost(trt_pts)
+pd_ss_get_betapost(trt_pts, npost = 3000)
 }
 \description{
 Draw posterior distribution through Beta
