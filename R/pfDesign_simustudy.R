@@ -274,8 +274,6 @@ pd_ss_summarize <- function(rst_truth, rst_theta, rst_filter, rst_par,
         var2  <- var(rst_trt[[1]])
         type1 <- get_pval(est1, var1, est2, var2)
 
-        browser()
-
         ## power
         est2  <- mean(rst_trt[[2]])
         var2  <- var(rst_trt[[2]])
